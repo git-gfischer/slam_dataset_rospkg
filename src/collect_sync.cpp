@@ -76,7 +76,7 @@ int main(int argc, char **argv)
   mkdir((dataset+"/rgb").c_str(),0777); //create folder for rgb data
   mkdir((dataset+"/depth").c_str(),0777); // create folder for depth information
 
-  /*
+  
   // subscriber for color cam in case rgbd camera model localization
   message_filters::Subscriber<sensor_msgs::Image> sub_rgb(nh,"/camera/color/image_raw", 10);
   // subscriber for depth cam in case rgbd camera model localization
@@ -89,5 +89,5 @@ int main(int argc, char **argv)
   message_filters::Synchronizer<sync_pol> sync(sync_pol(10),sub_rgb,sub_depth);
   sync.registerCallback(boost::bind(&RGBD_Sync::imageCallback,&obj,_1,_2));
  
-  ros::spin();*/
+  ros::spin();
 }
