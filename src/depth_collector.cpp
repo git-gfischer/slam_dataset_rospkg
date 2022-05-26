@@ -51,5 +51,4 @@ void Depth_Collector::imageCallback(const sensor_msgs::ImageConstPtr& msg)
 
     std::cout << filename_depth << " " << new_line_depth <<"\n";
 
-
 }

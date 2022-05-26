@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(slam_data_collection)
+project(slam_realsense_ros)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -106,7 +106,6 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES slam_data_collection
 #  CATKIN_DEPENDS roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
@@ -127,7 +126,6 @@ include_directories($(OpenCV_INCLUDE_DIRS))
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/slam_data_collection.cpp
 # )
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 #file(GLOB SRCS src/rgb_collector.cpp)
@@ -155,16 +153,12 @@ target_link_libraries(sync ${OpenCV_LIBS})
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/slam_data_collection_node.cpp)
-add_executable(collect src/collect.cpp)
+# add_executable)
+
 add_executable(collect_sync src/collect_sync.cpp)
-target_link_libraries(collect rgb)
-target_link_libraries(collect depth)
 target_link_libraries(collect_sync rgb)
 target_link_libraries(collect_sync depth)
 target_link_libraries(collect_sync sync)
-
-target_link_libraries(collect ${catkin_LIBRARIES} ${OpenCV_LIBS})
 target_link_libraries(collect_sync ${catkin_LIBRARIES} ${OpenCV_LIBS})
 
 ## Rename C++ executable without prefix
@@ -229,7 +223,7 @@ target_link_libraries(collect_sync ${catkin_LIBRARIES} ${OpenCV_LIBS})
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_slam_data_collection.cpp)
+# catkin_add_gtest()
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
