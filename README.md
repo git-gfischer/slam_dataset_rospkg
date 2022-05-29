@@ -29,3 +29,9 @@ And on another terminal run the data collection package, if you don't provide th
 rosrun slam_realsense_ros collect_sync _param:=[DST_DATASET_PATH]
 ```
 
+## Run package with roslaunch
+To run the package with camera visualization in parallel to the data acquisition, execute the following command:
+```
+roslaunch slam_realsense_ros  slam_data_collection.launch
+```
+
