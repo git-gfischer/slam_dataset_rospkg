@@ -67,7 +67,7 @@ int main(int argc, char **argv)
 
   std::cout<< "DST dataset path: " << dataset0 << std::endl; //input map
 
-  std::string time_data_s = std::to_string(local_tm.tm_year+1900) + "_feb_" + std::to_string(local_tm.tm_mday) + "_" + std::to_string(local_tm.tm_hour) + "_" + std::to_string(local_tm.tm_min) + "_" + std::to_string(local_tm.tm_sec);
+  std::string time_data_s = std::to_string(local_tm.tm_year+1900) + std::to_string(local_tm.tm_mon) + std::to_string(local_tm.tm_mday) + "_" + std::to_string(local_tm.tm_hour) + "_" + std::to_string(local_tm.tm_min) + "_" + std::to_string(local_tm.tm_sec);
   std::string dataset = dataset0 + "/" + time_data_s;
   mkdir(dataset.c_str(),0777); //create folder for the whole Dataset
 

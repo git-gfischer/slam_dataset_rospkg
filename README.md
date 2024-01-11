@@ -14,8 +14,8 @@ sudo apt-get install ros-melodic-openni-launch
 ```
 
 After installed the dependencies and finish the compilation, make the following edits to the file:```/opt/ros/melodic/share/realsense2_camera/launch/rs_rgbd.launch ``` </br>
-1.    edit the "depth_width", "depth_height" of the depth image for 848,480 respectively.
-2.    edit the "color_width", "color_height" of the rgb image  for 848,480 respectively.
+1.    edit the "depth_width", "depth_height" of the depth image for 640,480 respectively.
+2.    edit the "color_width", "color_height" of the rgb image  for 640,480 respectively.
 3.    edit the "color_fps" of the image for 30
 4.    edit the "depth_fps" of the depth for 30
 
