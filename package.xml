@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>slam_realsense_ros</name>
+  <name>slam_dataset_rospkg</name>
   <version>0.0.0</version>
-  <description>The slam_realsense_ros package</description>
+  <description>The slam_dataset_ros package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
@@ -50,13 +50,14 @@
   <build_depend>roscpp</build_depend>
   <build_depend>rospy</build_depend>
   <build_depend>std_msgs</build_depend>
+  <build_depend>message_filters</build_depend>
   <build_export_depend>roscpp</build_export_depend>
   <build_export_depend>rospy</build_export_depend>
   <build_export_depend>std_msgs</build_export_depend>
   <exec_depend>roscpp</exec_depend>
   <exec_depend>rospy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
-
+  <exec_depend>message_filters</exec_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

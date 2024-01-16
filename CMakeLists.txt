@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(slam_realsense_ros)
+project(slam_dataset_rospkg)
 set(CUDA_TOOLKIT_ROOT_DIR /usr/local/cuda-11.7)
+#set(PYTHON_EXECUTABLE /usr/bin/python3)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -14,6 +15,9 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  message_filters
+  sensor_msgs
+  geometry_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -142,9 +146,14 @@ add_library(sync
             src/rgbd_sync.cpp 
             include/rgbd_sync.h)
 
+add_library(synching 
+            src/sensor_sync.cpp
+            include/sensor_sync.h)
+
 target_link_libraries(depth ${OpenCV_LIBS})
 target_link_libraries(rgb ${OpenCV_LIBS})
 target_link_libraries(sync ${OpenCV_LIBS})
+target_link_libraries(synching ${OpenCV_LIBS})
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -154,13 +163,16 @@ target_link_libraries(sync ${OpenCV_LIBS})
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable)
+
 
 add_executable(collect_sync src/collect_sync.cpp)
+add_executable(sensor_sync src/slam_rosbag.cpp)
 target_link_libraries(collect_sync rgb)
 target_link_libraries(collect_sync depth)
 target_link_libraries(collect_sync sync)
 target_link_libraries(collect_sync ${catkin_LIBRARIES} ${OpenCV_LIBS})
+target_link_libraries(sensor_sync synching)
+target_link_libraries(sensor_sync ${catkin_LIBRARIES} ${OpenCV_LIBS})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

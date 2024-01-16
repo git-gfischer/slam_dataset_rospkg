@@ -1,0 +1,6 @@
+<launch>
+<!--Run sync sensor package-->
+
+<node name = "sensor_sync" pkg = "slam_rosbag_sync" type="sensor_sync" respawn= "false"/>
+
+</launch>
