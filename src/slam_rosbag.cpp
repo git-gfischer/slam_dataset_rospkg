@@ -17,7 +17,7 @@
 //===========================================================
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "sync_sensors"); // ros node name
+  ros::init(argc, argv, "sensor_sync"); // ros node name
   ros::NodeHandle nh;
 
 

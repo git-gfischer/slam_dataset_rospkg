@@ -31,7 +31,7 @@ roslaunch realsense2_camera rs_rgbd.launch
 ```
 In a another terminal:
 ```
-roslaunch slam_dataset_rospkg sensor_sync
+roslaunch slam_dataset_rospkg slam_rosbag_sync.launch
 ```
 
 ### Create the rosbag
