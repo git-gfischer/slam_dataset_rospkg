@@ -38,10 +38,11 @@ class Sensor_Sync
                       const sensor_msgs::ImageConstPtr& msgD,
                       const sensor_msgs::ImuConstPtr& msgIMU,
                       const geometry_msgs::PoseStampedConstPtr& msgVICON);
-    private:
+
         ros::Publisher *pub_rgb;
         ros::Publisher *pub_depth;
         ros::Publisher *pub_imu;
         ros::Publisher *pub_vicon;
+
 
 };

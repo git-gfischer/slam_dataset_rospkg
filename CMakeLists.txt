@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(slam_dataset_rospkg)
 set(CUDA_TOOLKIT_ROOT_DIR /usr/local/cuda-11.7)
-#set(PYTHON_EXECUTABLE /usr/bin/python3)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)

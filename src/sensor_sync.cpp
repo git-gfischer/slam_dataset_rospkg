@@ -14,9 +14,9 @@ Sensor_Sync::~Sensor_Sync(){}
 void Sensor_Sync::callback(const sensor_msgs::ImageConstPtr& msgRGB,
                            const sensor_msgs::ImageConstPtr& msgD,
                            const sensor_msgs::ImuConstPtr& msgIMU,
-                           const geometry_msgs::PoseStampedConstPtr & msgVICON)
+                           const geometry_msgs::PoseStampedConstPtr& msgVICON)
 {
-    ROS_INFO("flag");
+    ROS_INFO("Sync callback \n");
     pub_rgb->publish(msgRGB);
     pub_depth->publish(msgD);
     pub_imu->publish(msgIMU);
