@@ -8,7 +8,7 @@
 </group>
 
 <group ns = "group2">
-<node name = "collect_sync" pkg = "slam_realsense_ros" type="collect_sync" respawn= "false" output="screen" />
+<node name = "collect_sync" pkg = "slam_dataset_rospkg" type="collect_sync" respawn= "false" output="screen" />
 </group>
 
 </launch>

@@ -28,7 +28,7 @@ int main(int argc, char **argv)
   //subscriber for IMU measurements
   message_filters::Subscriber<sensor_msgs::Imu> sub_imu(nh,"/imu",10);
   //subscriber for Vicon camera motion system
-  message_filters::Subscriber<geometry_msgs::PoseStamped> sub_vicon(nh,"/pose_stamped",10);
+  message_filters::Subscriber<geometry_msgs::PoseStamped> sub_vicon(nh,"/vicon",10);
 
   Sensor_Sync obj(nh);
 

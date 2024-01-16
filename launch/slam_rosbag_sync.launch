@@ -3,4 +3,7 @@
 
 <node name = "sensor_sync" pkg = "slam_dataset_rospkg" type="sensor_sync" respawn= "false" output="screen"/>
 
+<arg name="bag_path" default="$(find slam_dataset_rospkg)/log/test" />
+<node pkg="rosbag" type="record" args="record -o $(arg bag_path) /camera/color/image_raw_sync /camera/aligned_depth_to_color/image_raw_sync /imu/imu_sync /vicon/pose_sync --quiet" name="record"/>
+
 </launch>
