@@ -38,7 +38,8 @@ void Depth_Collector::imageCallback(const sensor_msgs::ImageConstPtr& msg)
     cv::Mat depth_float_img = cv_ptr->image;  
     
     //get timestamp
-    uint64 us = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
+    //uint64 us = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
+    double us = static_cast<double>(msg->header.stamp.sec) + static_cast<double>(msg->header.stamp.nsec) / 1e9;
     std::string timestamp = std::to_string(us);
     timestamp.insert(timestamp.end()-6,1,'.');
     

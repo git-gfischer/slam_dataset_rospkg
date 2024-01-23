@@ -3,7 +3,7 @@
 Sensor_Sync::Sensor_Sync(ros::NodeHandle nh)
 {
     pub_rgb = new ros::Publisher(nh.advertise<sensor_msgs::Image>("/camera/color/image_raw_sync", 10));
-    pub_depth = new ros::Publisher(nh.advertise<sensor_msgs::Image>("/camera/aligned_depth_to_color/image_raw_sync", 10));
+    pub_depth = new ros::Publisher(nh.advertise<sensor_msgs::Image>("/camera/depth/image_rect_raw_sync", 10));
     pub_imu = new ros::Publisher(nh.advertise<sensor_msgs::Imu>("imu/imu_sync", 10));
     pub_vicon = new ros::Publisher(nh.advertise<geometry_msgs::PoseStamped>("vicon/pose_sync", 10));
 

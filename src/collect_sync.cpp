@@ -1,7 +1,7 @@
 //Title: ROS SLAM data collector using RealSense RGBD camera
-//Date: 22/01/2022
-//Author: Fischer @ LabRob
-//Usage: rosrun slam_realsense_ros collect_sync _param:=[DST DATASET PATH]
+//Date: 17/01/2024
+//Author: Fischer @ iit
+//Usage: rosrun slam_dataset_rospkg collect_sync _dataset_path:=[DST DATASET PATH]
 
 #include <ros/ros.h>
 #include <image_transport/image_transport.h>
@@ -41,7 +41,7 @@ int main(int argc, char **argv)
 {
   std::string param;
   ros::init(argc, argv, "collect_sync"); // ros node name
-  ros::NodeHandle nh;
+  ros::NodeHandle nh("~");
 
   //get Time and Data
   auto time_date = std::chrono::system_clock::to_time_t((std::chrono::system_clock::now()));
@@ -50,7 +50,8 @@ int main(int argc, char **argv)
   //create store dataset path
   std::string check; 
   std::string dataset0;
-  nh.getParam("param", check);
+  nh.getParam("dataset_path", check);
+  std::cout<<check<<"\n";
 
   if(check.empty())
   {
@@ -67,7 +68,7 @@ int main(int argc, char **argv)
 
   std::cout<< "DST dataset path: " << dataset0 << std::endl; //input map
 
-  std::string time_data_s = std::to_string(local_tm.tm_year+1900) + std::to_string(local_tm.tm_mon) + std::to_string(local_tm.tm_mday) + "_" + std::to_string(local_tm.tm_hour) + "_" + std::to_string(local_tm.tm_min) + "_" + std::to_string(local_tm.tm_sec);
+  std::string time_data_s = std::to_string(local_tm.tm_year+1900) + "_" + std::to_string(local_tm.tm_mon) + "_" + std::to_string(local_tm.tm_mday) + "_" + std::to_string(local_tm.tm_hour) + "_" + std::to_string(local_tm.tm_min) + "_" + std::to_string(local_tm.tm_sec);
   std::string dataset = dataset0 + "/" + time_data_s;
   mkdir(dataset.c_str(),0777); //create folder for the whole Dataset
 
@@ -78,9 +79,9 @@ int main(int argc, char **argv)
 
   
   // subscriber for color cam in case rgbd camera model localization
-  message_filters::Subscriber<sensor_msgs::Image> sub_rgb(nh,"/camera/color/image_raw", 10);
+  message_filters::Subscriber<sensor_msgs::Image> sub_rgb(nh,"/d435/color/image_raw", 10);
   // subscriber for depth cam in case rgbd camera model localization
-  message_filters::Subscriber<sensor_msgs::Image> sub_depth(nh,"/camera/aligned_depth_to_color/image_raw", 10);
+  message_filters::Subscriber<sensor_msgs::Image> sub_depth(nh,"/d435/aligned_depth_to_color/image_raw", 10);
   
   RGBD_Sync obj(dataset,rgb_file,depth_file);
 

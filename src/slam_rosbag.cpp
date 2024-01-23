@@ -24,7 +24,7 @@ int main(int argc, char **argv)
   // subscriber for color cam in case rgbd camera model localization
   message_filters::Subscriber<sensor_msgs::Image> sub_rgb(nh,"/camera/color/image_raw", 10);
   // subscriber for depth cam in case rgbd camera model localization
-  message_filters::Subscriber<sensor_msgs::Image> sub_depth(nh,"/camera/aligned_depth_to_color/image_raw", 10);
+  message_filters::Subscriber<sensor_msgs::Image> sub_depth(nh,"/camera/depth/image_rect_raw", 10);
   //subscriber for IMU measurements
   message_filters::Subscriber<sensor_msgs::Imu> sub_imu(nh,"/imu",10);
   //subscriber for Vicon camera motion system

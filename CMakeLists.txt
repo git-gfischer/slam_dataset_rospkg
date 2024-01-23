@@ -166,12 +166,14 @@ target_link_libraries(synching ${OpenCV_LIBS})
 
 add_executable(collect_sync src/collect_sync.cpp)
 add_executable(sensor_sync src/slam_rosbag.cpp)
+add_executable(gt_extractor src/bag_slam_gt_extractor.cpp)
 target_link_libraries(collect_sync rgb)
 target_link_libraries(collect_sync depth)
 target_link_libraries(collect_sync sync)
 target_link_libraries(collect_sync ${catkin_LIBRARIES} ${OpenCV_LIBS})
 target_link_libraries(sensor_sync synching)
 target_link_libraries(sensor_sync ${catkin_LIBRARIES} ${OpenCV_LIBS})
+target_link_libraries(gt_extractor ${catkin_LIBRARIES})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

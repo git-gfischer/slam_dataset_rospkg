@@ -23,8 +23,11 @@ void RGB_Collector::imageCallback(const sensor_msgs::ImageConstPtr& msg)
         ROS_ERROR("Could not convert from '%s' to 'bgr8'.", msg->encoding.c_str());
     }
 
+    
+
     //get timestamp
-    uint64 us = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
+    //uint64 us = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
+    double us = static_cast<double>(msg->header.stamp.sec) + static_cast<double>(msg->header.stamp.nsec) / 1e9;
     std::string timestamp = std::to_string(us);
     timestamp.insert(timestamp.end()-6,1,'.');
 

@@ -1,0 +1,18 @@
+<launch>
+<!--Run collector and visualizer in parallel-->
+
+<group ns = "group2">
+<!-- <remap from="/camera/color/image_raw_sync" to="/camera/color/image_raw" />
+<remap from="/camera/depth/image_rect_raw_sync" to="/camera/depth/image_rect_raw" />
+<remap from="/camera/aligned_depth_to_color/image_raw_sync" to="/camera/depth/image_rect_raw" /> -->
+<arg name="dataset_path" default="$(find slam_dataset_rospkg)/image_dataset" />
+<node name = "collect_sync" pkg = "slam_dataset_rospkg" type="collect_sync" respawn= "false" output="screen" args= "_dataset_path:=$(arg dataset_path)" />
+</group>
+
+<group ns = "group1">
+<node name = "image_view" pkg="image_view" type = "image_view" respawn = "false" output="screen" >
+<remap from="image" to="/camera/color/image_raw"/> 
+</node>
+</group>
+
+</launch>

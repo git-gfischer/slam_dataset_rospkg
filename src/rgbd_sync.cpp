@@ -43,17 +43,25 @@ void RGBD_Sync::imageCallback(const sensor_msgs::ImageConstPtr& msgRGB,const sen
     depth_img = cv_ptr->image; 
 
     //get timestamp
-    uint64 us = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
-    std::string timestamp = std::to_string(us);
-    timestamp.insert(timestamp.end()-6,1,'.');
+    //uint64 us = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
+    double us_rgb = static_cast<double>(msgRGB->header.stamp.sec) + static_cast<double>(msgRGB->header.stamp.nsec) / 1e9;
+    double us_depth = static_cast<double>(msgD->header.stamp.sec) + static_cast<double>(msgD->header.stamp.nsec) / 1e9;
+
+    std::string timestamp_rgb = std::to_string(us_rgb);
+    std::string timestamp_depth = std::to_string(us_depth);
+    //timestamp_rgb.insert(timestamp_rgb.end()-6,1,'.');
+    //timestamp_depth.insert(timestamp_depth.end()-6,1,'.');
+
+    //ROS_INFO("%s",timestamp_rgb.c_str() );
+    //ROS_INFO("%s",timestamp_depth.c_str() );
 
 
-    std::string filename_rgb= folder+"/rgb/"+timestamp+".png";
-    std::string new_line_rgb= timestamp + " " + "rgb/" + timestamp+".png \n";
+    std::string filename_rgb= folder+"/rgb/"+timestamp_rgb+".png";
+    std::string new_line_rgb= timestamp_rgb + " " + "rgb/" + timestamp_rgb+".png \n";
 
 
-    std::string filename_depth= folder+"/depth/"+timestamp+".png";
-    std::string new_line_depth= timestamp + " " + "depth/" + timestamp+".png \n";
+    std::string filename_depth= folder+"/depth/"+timestamp_depth+".png";
+    std::string new_line_depth= timestamp_depth + " " + "depth/" + timestamp_depth+".png \n";
     
     
     rgb_file << new_line_rgb;
@@ -63,7 +71,7 @@ void RGBD_Sync::imageCallback(const sensor_msgs::ImageConstPtr& msgRGB,const sen
     cv::imwrite(filename_rgb,rgb_image);
     cv::imwrite(filename_depth,depth_img);
 
-    std::cout << "file saved:" << folder << " " <<timestamp <<"\n";
+    std::cout << "file saved:" << folder << " " <<timestamp_rgb <<"\n";
 
     //show rgb image
     //cv::imshow("rgb", rgb_image);
