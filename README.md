@@ -79,5 +79,5 @@ roslaunch slam_dataset_rospkg slam_image_dataset.launch
 ## Ground Truth extraction
 To create a text file with the robots trajectory from a motion camera system, run the following command. You will need a terminal with roscore running and another terminal with your rosbag running as well.
 ```
-rosrun slam_dataset_rospkg gt_extraction
+rosrun slam_dataset_rospkg gt_extractor
 ```
