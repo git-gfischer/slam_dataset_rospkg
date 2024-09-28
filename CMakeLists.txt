@@ -169,6 +169,7 @@ add_executable(sensor_sync src/slam_rosbag.cpp)
 add_executable(gt_extractor src/bag_slam_gt_extractor.cpp)
 add_executable(image_size_subscriber src/image_size.cpp)
 add_executable(t265_odom_extraction src/t265_odom_extraction.cpp)
+add_executable(crop_image src/crop_image.cpp)
 target_link_libraries(collect_sync rgb)
 target_link_libraries(collect_sync depth)
 target_link_libraries(collect_sync sync)
@@ -178,6 +179,7 @@ target_link_libraries(sensor_sync ${catkin_LIBRARIES} ${OpenCV_LIBS})
 target_link_libraries(gt_extractor ${catkin_LIBRARIES})
 target_link_libraries(image_size_subscriber ${catkin_LIBRARIES} ${OpenCV_LIBS})
 target_link_libraries(t265_odom_extraction ${catkin_LIBRARIES})
+target_link_libraries(crop_image ${catkin_LIBRARIES} ${OpenCV_LIBS})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
