@@ -112,8 +112,10 @@ int main(int argc, char** argv) {
     std::string gt_topic;
     nh.param<std::string>("topic", gt_topic, "/vicon/vero_state_estimation/");
 
+    ROS_INFO("Subscribing to topic: %s", gt_topic.c_str());
+
     // Create a subscriber for the geometry_msgs/TransformStamped topic
-    ros::Subscriber gt_subscriber = nh.subscribe(gt_topic, 10, gtCallback);
+    ros::Subscriber gt_subscriber = nh.subscribe(gt_topic.c_str(), 10, gtCallback);
 
 
     ros::spin();
