@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5.0)
 project(slam_dataset_rospkg)
-set(CUDA_TOOLKIT_ROOT_DIR /usr/local/cuda-11.7)
+set(CUDA_TOOLKIT_ROOT_DIR /usr/local/cuda-12.3)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -169,7 +169,7 @@ add_executable(sensor_sync src/slam_rosbag.cpp)
 add_executable(gt_extractor src/bag_slam_gt_extractor.cpp)
 add_executable(image_size_subscriber src/image_size.cpp)
 add_executable(depth_size_subscriber src/depth_size.cpp)
-add_executable(t265_odom_extraction src/t265_odom_extraction.cpp)
+add_executable(t265_odom src/t265_odom.cpp)
 add_executable(crop_image src/crop_image.cpp)
 target_link_libraries(collect_sync rgb)
 target_link_libraries(collect_sync depth)
@@ -180,7 +180,7 @@ target_link_libraries(sensor_sync ${catkin_LIBRARIES} ${OpenCV_LIBS})
 target_link_libraries(gt_extractor ${catkin_LIBRARIES})
 target_link_libraries(image_size_subscriber ${catkin_LIBRARIES} ${OpenCV_LIBS})
 target_link_libraries(depth_size_subscriber ${catkin_LIBRARIES} ${OpenCV_LIBS})
-target_link_libraries(t265_odom_extraction ${catkin_LIBRARIES})
+target_link_libraries(t265_odom ${catkin_LIBRARIES})
 target_link_libraries(crop_image ${catkin_LIBRARIES} ${OpenCV_LIBS})
 
 ## Rename C++ executable without prefix

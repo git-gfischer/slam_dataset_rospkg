@@ -81,3 +81,9 @@ To create a text file with the robots trajectory from a motion camera system, ru
 ```
 rosrun slam_dataset_rospkg gt_extractor _topic:=<topic Name>
 ```
+
+## Extract pose from T265
+To create a text file with the robots trajectory from a RealSense T265, run the following command. You will need a terminal with roscore running and another terminal with your rosbag running as well. This will create a txt file with name t265_odom.txt
+```
+rosrun slam_dataset_rospkg t265_odom _topic:=<topic Name>
+```

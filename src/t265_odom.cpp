@@ -108,15 +108,21 @@ void gtCallback(const nav_msgs::Odometry::ConstPtr& msg) {
 
 int main(int argc, char** argv) {
 
-    ROS_INFO("Extracting ground truth and saving it in .txt file");
-    ros::init(argc, argv, "gt_extractor");
+    ROS_INFO("Extracting T265 trajectory and saving it in .txt file");
+    ros::init(argc, argv, "t265_odom");
     //myfile1.open("timestamps.txt");
     gtfile.open("t265_odom.txt");
     ros::NodeHandle nh("~");
 
-    // Create a subscriber for the geometry_msgs/TransformStamped topic
-    ros::Subscriber gt_subscriber = nh.subscribe("/aliengo/odom", 10, gtCallback);
+    // Default topic
+    std::string topic = "/camera/odom/sample";
 
+    // Get the topic parameter
+    if   (nh.getParam("topic", topic))  {ROS_INFO("Subscribed to topic: %s", topic.c_str());}
+    else {ROS_WARN("No topic specified. Using default: %s", topic.c_str());}
+
+    // Create a subscriber for the geometry_msgs/TransformStamped topic
+    ros::Subscriber t265_subscriber = nh.subscribe(topic.c_str(), 10, gtCallback);
 
     ros::spin();
     //myfile1.close();
