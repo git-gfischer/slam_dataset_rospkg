@@ -18,6 +18,10 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
         int width = cv_ptr->image.cols;
         int height = cv_ptr->image.rows;
 
+        cv::imshow("rgb", cv_ptr->image);
+        // Wait for 1 millisecond and check if 'q' is pressed to exit
+        if (cv::waitKey(1) == 'q') {return;}
+
         // Output the image size
         ROS_INFO("Image size: width = %d, height = %d", width, height);
     }
