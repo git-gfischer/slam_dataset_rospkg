@@ -109,17 +109,17 @@ int main(int argc, char** argv) {
     gtfile.open("ground_truth.txt");
     ros::NodeHandle nh("~");
 
-    std::string gt_topic;
-    nh.param<std::string>("topic", gt_topic, "/vicon/vero_state_estimation/");
+    // Default topic
+    std::string topic = "/vicon/";
 
-    ROS_INFO("Subscribing to topic: %s", gt_topic.c_str());
+    // Get the topic parameter
+    if   (nh.getParam("topic", topic))  {ROS_INFO("Subscribed to topic: %s", topic.c_str());}
+    else {ROS_WARN("No topic specified. Using default: %s", topic.c_str());}
 
     // Create a subscriber for the geometry_msgs/TransformStamped topic
-    ros::Subscriber gt_subscriber = nh.subscribe(gt_topic.c_str(), 10, gtCallback);
-
+    ros::Subscriber gt_subscriber = nh.subscribe(topic.c_str(), 10, gtCallback);
 
     ros::spin();
-    //myfile1.close();
     gtfile.close();
     return 0;
 }
