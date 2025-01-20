@@ -87,3 +87,24 @@ To create a text file with the robots trajectory from a RealSense T265, run the 
 ```
 rosrun slam_dataset_rospkg t265_odom _topic:=<topic Name>
 ```
+
+# Vision Tools nodes
+Some useful image nodes for debugging
+
+## Image size 
+this will show the image and print the image size
+```
+rosrun slam_dataset_rospkg image_size_subscriber _image_topic:=<TOPIC NAME>
+```
+
+## Depth size
+this will show the depth image and print the image size
+```
+rosrun slam_dataset_rospkg depth_size_subscriber _image_topic:=<TOPIC NAME>
+```
+
+## Crop image 
+from an input image topic, it will create a cropped image topic
+```
+rosrun slam_dataset_rospkg crop_image _center_x:=INT _center_y:=INT _crop_width:=INT _crop_height:=INT
+```
